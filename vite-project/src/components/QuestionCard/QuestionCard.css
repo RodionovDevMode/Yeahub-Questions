@@ -40,3 +40,34 @@
 	line-height: 1.6;
 	color: #333;
 }
+
+.question-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	cursor: pointer;
+	padding: 12px 16px;
+	background: #f8f9fa;
+	border-radius: 12px;
+	transition: background 0.2s;
+}
+
+.question-header:hover {
+	background: #e9ecef;
+}
+
+.question-header h2 {
+	margin: 0;
+	font-size: 18px;
+}
+
+.question-header span {
+	font-size: 20px;
+	color: #aa3bff;
+}
+
+.question-content {
+	padding: 16px;
+	border-top: 1px solid #e5e5e5;
+	margin-top: 8px;
+}
