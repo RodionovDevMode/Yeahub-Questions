@@ -1,0 +1,53 @@
+.header {
+	display: flex;
+	align-items: center;
+	gap: 32px;
+	padding: 0 32px;
+	background: #f8f9fa;
+	height: 60px;
+	border-bottom: 1px solid #ddd;
+}
+
+.logo h1 {
+	margin: 0;
+	font-size: 20px;
+	line-height: 1;
+}
+
+.menu {
+	display: flex;
+	gap: 24px;
+}
+
+.menu h3 {
+	margin: 0;
+	font-size: 16px;
+	line-height: 1;
+	cursor: pointer;
+	font-weight: normal;
+}
+
+.menu h3:hover {
+	color: #007bff;
+}
+
+/* Форма справа (прижимаем) */
+.header form {
+	display: flex;
+	gap: 12px;
+	margin-left: auto; /* 👈 это отправляет форму в правый край */
+}
+
+.header button {
+	padding: 6px 16px;
+	cursor: pointer;
+	border: 1px solid #ccc;
+	background: white;
+	border-radius: 4px;
+}
+
+.header button:hover {
+	background: #007bff;
+	color: white;
+	border-color: #007bff;
+}
