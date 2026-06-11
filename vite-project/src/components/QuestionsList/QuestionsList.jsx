@@ -1,17 +1,17 @@
-import QuestionList from '../QuestionList/QuestionList'
+import QuestionCard from '../QuestionCard/QuestionCard'
 import Sidebar from '../Sidebar/Sidebar'
-import './QuestionsCard.css'
-function QuestionsCard() {
+import './QuestionsList.css'
+
+function QuestionsList({ questions }) {
 	return (
 		<div className='page'>
-			{/* Шапка */}
 			<header className='header'>
 				<div className='subtitle'>Вопросы React, JavaScript</div>
 			</header>
 
 			<div className='main-grid'>
 				<div className='question-section'>
-					<QuestionList />
+					<QuestionCard questions={questions} />
 				</div>
 
 				<Sidebar />
@@ -20,4 +20,4 @@ function QuestionsCard() {
 	)
 }
 
-export default QuestionsCard
+export default QuestionsList
