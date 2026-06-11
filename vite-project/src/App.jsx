@@ -1,11 +1,9 @@
-import Header from './components/Header/Header'
-import QuestionsList from './components/QuestionsList/QuestionsList'
+import QuestionPage from './pages/QuestionsPage/QuestionPage'
 
 function App() {
 	return (
 		<div>
-			<Header />
-			<QuestionsList />
+			<QuestionPage />
 		</div>
 	)
 }

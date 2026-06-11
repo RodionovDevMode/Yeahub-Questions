@@ -1,0 +1,91 @@
+/* Боковая панель */
+.sidebar {
+	flex: 1;
+	background: #fff;
+	border: 1px solid #e5e5e5;
+	border-radius: 12px;
+	padding: 24px;
+	align-self: start;
+}
+
+/* Блоки внутри сайдбара */
+.block {
+	margin-bottom: 32px;
+}
+
+.block h3 {
+	font-size: 18px;
+	margin-bottom: 16px;
+	padding-bottom: 8px;
+	border-bottom: 2px solid #aa3bff;
+	display: inline-block;
+}
+
+.block ul {
+	list-style: none;
+}
+
+.block li {
+	padding: 8px 0;
+	color: #555;
+	cursor: pointer;
+}
+
+.block li:hover {
+	color: #aa3bff;
+}
+
+/* Теги (уровень сложности) */
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.tags button {
+	padding: 6px 16px;
+	border: 1px solid #ddd;
+	background: white;
+	border-radius: 20px;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+
+.tags button:hover {
+	background: #aa3bff;
+	color: white;
+	border-color: #aa3bff;
+}
+
+/* Звёзды рейтинга */
+.stars {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	font-size: 24px;
+}
+
+.stars span:first-child {
+	color: #ffc107;
+}
+
+/* Кнопки статуса */
+.status-buttons {
+	display: flex;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+
+.status-buttons button {
+	padding: 8px 20px;
+	border: 1px solid #ddd;
+	background: white;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+.status-buttons button:hover {
+	background: #aa3bff;
+	color: white;
+	border-color: #aa3bff;
+}

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './Header.css'
-import RegistrationModal from '../RegistrationModal/RegistrationModal'
+import RegistrationModal from './components/RegistrationModal/RegistrationModal'
 
 function Header() {
 	const [isModalOpen, setIsModalOpen] = useState(false)
