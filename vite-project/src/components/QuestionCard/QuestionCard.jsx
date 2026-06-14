@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import './QuestionCard.css'
 
-function QuestionCard({ questions }) {
-	const [openId, setOpenId] = useState(null) // какой вопрос открыт
+function QuestionCard({ questions, loading, error }) {
+	const [openId, setOpenId] = useState(null)
+
+	if (loading) return <p>Загрузка...</p>
+	if (error) return <p>Ошибка: {error}</p>
 
 	const toggleQuestion = id => {
-		setOpenId(openId === id ? null : id) // закрыть если тот же, иначе открыть новый
+		setOpenId(openId === id ? null : id)
 	}
 
 	if (!questions || questions.length === 0) {
@@ -16,7 +19,6 @@ function QuestionCard({ questions }) {
 		<div>
 			{questions.map(question => (
 				<div key={question.id} className='question-card'>
-					{/* Заголовок — кликабельный */}
 					<div
 						className='question-header'
 						onClick={() => toggleQuestion(question.id)}

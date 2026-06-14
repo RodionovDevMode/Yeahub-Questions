@@ -1,8 +1,20 @@
+import useSidebarData from '../../hooks/useSidebarData'
 import QuestionCard from '../QuestionCard/QuestionCard'
 import Sidebar from '../Sidebar/Sidebar'
 import './QuestionsList.css'
 
-function QuestionsList({ questions }) {
+function QuestionsList() {
+	const {
+		specializations,
+		skills,
+		questions,
+		loadingQuestions,
+		errorQuestions,
+		loadingSpec,
+		errorSpec,
+		loadingSkills,
+		errorSkills,
+	} = useSidebarData()
 	return (
 		<div className='page'>
 			<header className='header'>
@@ -11,10 +23,21 @@ function QuestionsList({ questions }) {
 
 			<div className='main-grid'>
 				<div className='question-section'>
-					<QuestionCard questions={questions} />
+					<QuestionCard
+						questions={questions}
+						loading={loadingQuestions}
+						error={errorQuestions}
+					/>
 				</div>
 
-				<Sidebar />
+				<Sidebar
+					specializations={specializations}
+					skills={skills}
+					loadingSpec={loadingSpec}
+					errorSpec={errorSpec}
+					loadingSkills={loadingSkills}
+					errorSkills={errorSkills}
+				/>
 			</div>
 		</div>
 	)
