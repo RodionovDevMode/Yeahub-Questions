@@ -1,10 +1,20 @@
-function FilterBlock({ title, items }) {
+import './FilterBlock.css'
+
+function FilterBlock({ title, items, limit = 5, loading, error }) {
+	if (loading) return <p>Загрузка...</p>
+	if (error) return <p>Ошибка: {error}</p>
+
+	if (!items || items.length == 0) {
+		return null
+	}
+
+	const displayedItems = items.slice(0, limit)
 	return (
 		<>
 			<h3>{title}</h3>
 			<ul>
-				{items.map((item, i) => (
-					<li key={i}>{item}</li>
+				{displayedItems.map(item => (
+					<li key={item.id}>{item.title}</li>
 				))}
 			</ul>
 		</>

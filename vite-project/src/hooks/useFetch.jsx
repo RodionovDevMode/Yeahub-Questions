@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
-function useFetchQuestions(url) {
-	const [questions, setQuestions] = useState([])
+function useFetch(url) {
+	const [data, setData] = useState([])
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState(null)
 
@@ -14,7 +14,7 @@ function useFetchQuestions(url) {
 				return response.json()
 			})
 			.then(data => {
-				setQuestions(data.data || [])
+				setData(data.data || data)
 				setLoading(false)
 			})
 			.catch(err => {
@@ -23,7 +23,7 @@ function useFetchQuestions(url) {
 			})
 	}, [url])
 
-	return { questions, loading, error }
+	return { data, loading, error }
 }
 
-export default useFetchQuestions
+export default useFetch
