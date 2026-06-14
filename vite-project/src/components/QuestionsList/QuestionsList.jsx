@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import useSidebarData from '../../hooks/useSidebarData'
 import QuestionCard from '../QuestionCard/QuestionCard'
 import Sidebar from '../Sidebar/Sidebar'
@@ -15,6 +16,14 @@ function QuestionsList() {
 		loadingSkills,
 		errorSkills,
 	} = useSidebarData()
+	const [difficulty, setDifficulty] = useState(null)
+
+	const filteredQuestions =
+		questions?.filter(q => {
+			if (!difficulty) return true
+			const [min, max] = difficulty.split('-').map(Number)
+			return q.complexity >= min && q.complexity <= max
+		}) || []
 	return (
 		<div className='page'>
 			<header className='header'>
@@ -24,7 +33,7 @@ function QuestionsList() {
 			<div className='main-grid'>
 				<div className='question-section'>
 					<QuestionCard
-						questions={questions}
+						questions={filteredQuestions}
 						loading={loadingQuestions}
 						error={errorQuestions}
 					/>
@@ -37,6 +46,7 @@ function QuestionsList() {
 					errorSpec={errorSpec}
 					loadingSkills={loadingSkills}
 					errorSkills={errorSkills}
+					onDifficultyChange={setDifficulty}
 				/>
 			</div>
 		</div>
