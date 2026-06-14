@@ -12,6 +12,7 @@ function Sidebar({
 	errorSpec,
 	loadingSkills,
 	errorSkills,
+	onDifficultyChange,
 }) {
 	return (
 		<aside className='sidebar'>
@@ -33,7 +34,7 @@ function Sidebar({
 			</div>
 
 			<div className='block'>
-				<DifficultyTags />
+				<DifficultyTags onDifficultyChange={onDifficultyChange} />
 			</div>
 
 			<div className='block'>
