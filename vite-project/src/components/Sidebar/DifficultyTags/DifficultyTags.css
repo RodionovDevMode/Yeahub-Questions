@@ -1,0 +1,26 @@
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.tags button {
+	padding: 6px 16px;
+	border: 1px solid #ddd;
+	background: white;
+	border-radius: 20px;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+
+.tags button:hover {
+	background: #aa3bff;
+	color: white;
+	border-color: #aa3bff;
+}
+
+.tags button.active {
+	background: #aa3bff;
+	color: white;
+	border-color: #aa3bff;
+}
