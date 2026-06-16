@@ -1,0 +1,50 @@
+/* Блок рейтинга */
+.rating-block h3 {
+	font-size: 18px;
+	margin-bottom: 16px;
+	padding-bottom: 8px;
+	border-bottom: 2px solid #aa3bff;
+	display: inline-block;
+}
+
+/* Контейнер цифр */
+.rating-numbers {
+	display: flex;
+	gap: 8px;
+}
+
+/* Цифра в рамке */
+.rating-number {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	font-size: 16px;
+	font-weight: 500;
+	border: 2px solid #e0e0e0;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: all 0.2s;
+	user-select: none;
+	color: #888;
+	background: #fff;
+}
+
+/* Активная цифра (выбранная и ниже) */
+.rating-number.active {
+	border-color: #aa3bff;
+	background: #aa3bff;
+	color: #fff;
+}
+
+/* Наведение */
+.rating-number:hover {
+	border-color: #aa3bff;
+	transform: scale(1.05);
+}
+
+.rating-number.active:hover {
+	background: #9a2be8;
+	border-color: #9a2be8;
+}
