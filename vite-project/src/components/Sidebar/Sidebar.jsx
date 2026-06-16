@@ -8,11 +8,13 @@ import StatusButtons from './StatusButtons/StatusButtons'
 function Sidebar({
 	specializations,
 	skills,
+	questions,
 	loadingSpec,
 	errorSpec,
 	loadingSkills,
 	errorSkills,
 	onDifficultyChange,
+	onRatingChange,
 }) {
 	return (
 		<aside className='sidebar'>
@@ -38,7 +40,7 @@ function Sidebar({
 			</div>
 
 			<div className='block'>
-				<RatingStars />
+				<RatingStars questions={questions} onRatingChange={onRatingChange} />
 			</div>
 
 			<div className='block'>

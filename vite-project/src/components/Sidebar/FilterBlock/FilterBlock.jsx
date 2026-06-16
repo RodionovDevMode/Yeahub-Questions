@@ -8,7 +8,13 @@ function FilterBlock({ title, items, limit = 5, loading, error }) {
 		return null
 	}
 
-	const displayedItems = items.slice(0, limit)
+	const displayedItems = items
+		.filter(item => {
+			const title = item.title?.toLowerCase() || ''
+			return !title.includes('проверка') && !title.includes('загл')
+		})
+		.slice(0, limit)
+
 	return (
 		<>
 			<h3>{title}</h3>

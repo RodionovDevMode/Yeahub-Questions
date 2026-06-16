@@ -17,13 +17,22 @@ function QuestionsList() {
 		errorSkills,
 	} = useSidebarData()
 	const [difficulty, setDifficulty] = useState(null)
+	const [rating, setRating] = useState(null)
 
 	const filteredQuestions =
 		questions?.filter(q => {
-			if (!difficulty) return true
-			const [min, max] = difficulty.split('-').map(Number)
-			return q.complexity >= min && q.complexity <= max
+			let passDifficulty = true
+			let passRating = true
+			if (difficulty) {
+				const [min, max] = difficulty.split('-').map(Number)
+				passDifficulty = q.complexity >= min && q.complexity <= max
+			}
+			if (rating) {
+				passRating = q.rate === rating
+			}
+			return passDifficulty && passRating
 		}) || []
+
 	return (
 		<div className='page'>
 			<header className='header'>
@@ -42,11 +51,15 @@ function QuestionsList() {
 				<Sidebar
 					specializations={specializations}
 					skills={skills}
+					questions={questions}
 					loadingSpec={loadingSpec}
 					errorSpec={errorSpec}
 					loadingSkills={loadingSkills}
 					errorSkills={errorSkills}
+					loadingQuestions={loadingQuestions}
+					errorQuestions={errorQuestions}
 					onDifficultyChange={setDifficulty}
+					onRatingChange={setRating}
 				/>
 			</div>
 		</div>
