@@ -1,5 +1,42 @@
-.show-more {
-	margin-top: 8px;
-	margin-bottom: 16px;
-	display: inline-block;
+.filter-block ul {
+	padding: 0;
+	margin: 0 0 8px 0;
+	list-style: none;
+}
+
+.filter-block li {
+	padding: 8px 12px;
+	cursor: pointer;
+	border-radius: 6px;
+	transition: all 0.2s ease;
+	color: #333;
+}
+
+.filter-block li:hover {
+	background: #f3ebff;
+}
+
+.filter-block li.active {
+	background: #aa3bff;
+	color: #fff;
+	font-weight: 500;
+}
+
+.filter-block li.active:hover {
+	background: #9428e0;
+}
+
+.filter-block .show-more {
+	background: none;
+	border: none;
+	color: #aa3bff;
+	cursor: pointer;
+	font-size: 14px;
+	padding: 4px 0;
+	transition: color 0.2s;
+}
+
+.filter-block .show-more:hover {
+	color: #7a2bc4;
+	text-decoration: underline;
 }
