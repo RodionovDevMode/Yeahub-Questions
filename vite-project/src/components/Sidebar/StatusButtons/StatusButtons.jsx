@@ -1,13 +1,23 @@
-import React from 'react'
+import './StatusButtons.css'
 
-function StatusButtons() {
+function StatusButtons({ onStatusFilterChange, statusFilter }) {
 	return (
 		<>
 			<h3>Статус</h3>
 			<div className='status-buttons'>
-				<button>Изученные</button>
-				<button>Не изученные</button>
-				<button>Все</button>
+				<button
+					className={statusFilter === 'know' ? 'active' : ''}
+					onClick={() => onStatusFilterChange('know')}
+				>
+					Изученные
+				</button>
+				<button
+					className={statusFilter === 'unknown' ? 'active' : ''}
+					onClick={() => onStatusFilterChange('unknown')}
+				>
+					Не изученные
+				</button>
+				<button className={statusFilter === null ? 'active' : ''}>Все</button>
 			</div>
 		</>
 	)

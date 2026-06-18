@@ -1,6 +1,12 @@
 import './RegistrationModal.css'
 function RegistrationModal({ isOpen, openModal, closeModal }) {
 	if (!isOpen) return null
+
+	const handleSubmit = e => {
+		e.preventDefault()
+		closeModal()
+	}
+
 	return (
 		<div className='modal-overlay'>
 			<div className='modal-content' onClick={e => e.stopPropagation()}>
@@ -9,7 +15,7 @@ function RegistrationModal({ isOpen, openModal, closeModal }) {
 				</button>
 				<h1>Добро пожаловать</h1>
 				<p className='modal-subtitle'>Создайте аккаунт, чтобы продолжить</p>
-				<form className='modal-form' onSubmit={e => e.preventDefault()}>
+				<form className='modal-form' onSubmit={handleSubmit}>
 					<div className='input-group'>
 						<label>Имя:</label>
 						<input type='text' placeholder='Введите имя...' />
@@ -22,13 +28,13 @@ function RegistrationModal({ isOpen, openModal, closeModal }) {
 						<label>Email:</label>
 						<input type='email' placeholder='example@yandex.ru' />
 					</div>
+					<div className='modal-buttons'>
+						<button type='submit'>Зарегистрироваться</button>
+						<button type='button' onClick={closeModal}>
+							Отмена
+						</button>
+					</div>
 				</form>
-				<div className='modal-buttons'>
-					<button type='submit'>Зарегистрироваться</button>
-					<button type='button' onClick={closeModal}>
-						Отмена
-					</button>
-				</div>
 			</div>
 		</div>
 	)

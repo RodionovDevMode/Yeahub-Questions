@@ -1,8 +1,16 @@
 import { useState } from 'react'
 import './QuestionCard.css'
 
-function QuestionCard({ questions, loading, error }) {
+function QuestionCard({
+	questions,
+	loading,
+	error,
+	limit,
+	questionsStatus,
+	onQuestionStatusChange,
+}) {
 	const [openId, setOpenId] = useState(null)
+	const [showAll, setShowAll] = useState(false)
 
 	if (questions === null || questions === undefined) return <p>Загрузка...</p>
 	if (loading) return <p>Загрузка...</p>
@@ -14,9 +22,13 @@ function QuestionCard({ questions, loading, error }) {
 		setOpenId(openId === id ? null : id)
 	}
 
+	const displayedItemsQuestions = showAll
+		? questions
+		: questions.slice(0, limit)
+
 	return (
 		<div>
-			{questions.map(question => (
+			{displayedItemsQuestions.map(question => (
 				<div key={question.id} className='question-card'>
 					<div
 						className='question-header'
@@ -34,10 +46,45 @@ function QuestionCard({ questions, loading, error }) {
 							</div>
 							{question.imageSrc && <img src={question.imageSrc} alt='схема' />}
 							<p className='description'>{question.description}</p>
+
+							<div className='question-status-buttons'>
+								<button
+									className={
+										questionsStatus[question.id] === 'know' ? 'active' : ''
+									}
+									onClick={() =>
+										onQuestionStatusChange(prev => ({
+											...prev,
+											[question.id]: 'know',
+										}))
+									}
+								>
+									✅ Знаю
+								</button>
+								<button
+									className={
+										questionsStatus[question.id] === 'unknown' ? 'active' : ''
+									}
+									onClick={() =>
+										onQuestionStatusChange(prev => ({
+											...prev,
+											[question.id]: 'unknown',
+										}))
+									}
+								>
+									❌ Не знаю
+								</button>
+							</div>
 						</div>
 					)}
 				</div>
 			))}
+			<button
+				className='question-show-all-btn'
+				onClick={() => setShowAll(!showAll)}
+			>
+				{showAll ? 'Скрыть' : 'Показать всё'}
+			</button>
 		</div>
 	)
 }
