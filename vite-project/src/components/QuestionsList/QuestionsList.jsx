@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import useSidebarData from '../../hooks/useSidebarData'
 import QuestionCard from '../QuestionCard/QuestionCard'
 import Sidebar from '../Sidebar/Sidebar'
@@ -20,12 +20,26 @@ function QuestionsList() {
 	const [rating, setRating] = useState(null)
 	const [search, setSearch] = useState('')
 	const [selectedSkill, setSelectedSkill] = useState(null)
+	const [questionsStatus, setQuestionsStatus] = useState({})
+	const [statusFilter, setStatusFilter] = useState(null)
+
+	useEffect(() => {
+		const saved = localStorage.getItem('questionsStatus')
+		if (saved) {
+			setQuestionsStatus(JSON.parse(saved))
+		}
+	}, [])
+
+	useEffect(() => {
+		localStorage.setItem('questionsStatus', JSON.stringify(questionsStatus))
+	}, [questionsStatus])
 
 	const filteredQuestions =
 		questions?.filter(q => {
 			let passDifficulty = true
 			let passRating = true
 			let passSkill = true
+			let passStatus = true
 			if (difficulty) {
 				const [min, max] = difficulty.split('-').map(Number)
 				passDifficulty = q.complexity >= min && q.complexity <= max
@@ -40,7 +54,15 @@ function QuestionsList() {
 			if (selectedSkill) {
 				passSkill = q.questionSkills?.some(skill => skill.id === selectedSkill)
 			}
-			return passDifficulty && passRating && passSkill
+
+			if (statusFilter === null) {
+				if (questionsStatus[q.id] === 'know') return false
+			} else if (statusFilter === 'know') {
+				if (questionsStatus[q.id] !== 'know') return false
+			} else if (statusFilter === 'unknown') {
+				if (questionsStatus[q.id] !== 'unknown') return false
+			}
+			return passDifficulty && passRating && passSkill && passStatus
 		}) || []
 
 	return (
@@ -55,6 +77,9 @@ function QuestionsList() {
 						questions={filteredQuestions}
 						loading={loadingQuestions}
 						error={errorQuestions}
+						limit={10}
+						onQuestionStatusChange={setQuestionsStatus}
+						questionsStatus={questionsStatus}
 					/>
 				</div>
 
@@ -73,6 +98,8 @@ function QuestionsList() {
 					onSearchChange={setSearch}
 					onSkillSelect={setSelectedSkill}
 					selectedSkill={selectedSkill}
+					statusFilter={statusFilter}
+					onStatusFilterChange={setStatusFilter}
 				/>
 			</div>
 		</div>

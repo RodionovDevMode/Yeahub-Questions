@@ -18,6 +18,8 @@ function Sidebar({
 	onSearchChange,
 	onSkillSelect,
 	selectedSkill,
+	onStatusFilterChange,
+	statusFilter,
 }) {
 	return (
 		<aside className='sidebar'>
@@ -51,7 +53,10 @@ function Sidebar({
 			</div>
 
 			<div className='block'>
-				<StatusButtons />
+				<StatusButtons
+					onStatusFilterChange={onStatusFilterChange}
+					statusFilter={statusFilter}
+				/>
 			</div>
 		</aside>
 	)
