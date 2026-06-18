@@ -15,10 +15,13 @@ function Sidebar({
 	errorSkills,
 	onDifficultyChange,
 	onRatingChange,
+	onSearchChange,
+	onSkillSelect,
+	selectedSkill,
 }) {
 	return (
 		<aside className='sidebar'>
-			<SearchInput />
+			<SearchInput onSearchChange={onSearchChange} />
 			<div className='block'>
 				<FilterBlock
 					title='Специализация'
@@ -26,12 +29,16 @@ function Sidebar({
 					limit={5}
 					loading={loadingSpec}
 					error={errorSpec}
+					onSkillSelect={onSkillSelect}
+					selectedSkill={selectedSkill}
 				/>
 				<FilterBlock
 					title='Навыки'
 					items={skills}
 					loading={loadingSkills}
 					error={errorSkills}
+					onSkillSelect={onSkillSelect}
+					selectedSkill={selectedSkill}
 				/>
 			</div>
 

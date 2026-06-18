@@ -4,15 +4,14 @@ import './QuestionCard.css'
 function QuestionCard({ questions, loading, error }) {
 	const [openId, setOpenId] = useState(null)
 
+	if (questions === null || questions === undefined) return <p>Загрузка...</p>
 	if (loading) return <p>Загрузка...</p>
 	if (error) return <p>Ошибка: {error}</p>
-
-	const toggleQuestion = id => {
-		setOpenId(openId === id ? null : id)
-	}
-
 	if (!questions || questions.length === 0) {
 		return <p>Нет вопросов</p>
+	}
+	const toggleQuestion = id => {
+		setOpenId(openId === id ? null : id)
 	}
 
 	return (

@@ -4,14 +4,14 @@ import useFetch from './useFetch'
 function useSidebarData() {
 	const {
 		data: specializations,
-		loadingSpec,
-		errorSpec,
+		loading: loadingSpec,
+		error: errorSpec,
 	} = useFetch(API_URLS.specializations)
 	const { data: skills, loadingSkills, errorSkills } = useFetch(API_URLS.skills)
 	const {
 		data: questionsList,
-		loadingQuestions,
-		errorQuestions,
+		loading: loadingQuestions,
+		error: errorQuestions,
 	} = useFetch(API_URLS.questions)
 
 	const specializationsList =
