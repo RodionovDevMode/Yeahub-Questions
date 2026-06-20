@@ -8,6 +8,7 @@ function QuestionCard({
 	limit,
 	questionsStatus,
 	onQuestionStatusChange,
+	statusFilter,
 }) {
 	const [openId, setOpenId] = useState(null)
 	const [showAll, setShowAll] = useState(false)
@@ -79,12 +80,14 @@ function QuestionCard({
 					)}
 				</div>
 			))}
-			<button
-				className='question-show-all-btn'
-				onClick={() => setShowAll(!showAll)}
-			>
-				{showAll ? 'Скрыть' : 'Показать всё'}
-			</button>
+			{statusFilter === 'know' || statusFilter === 'unknown' ? null : (
+				<button
+					className='question-show-all-btn'
+					onClick={() => setShowAll(!showAll)}
+				>
+					{showAll ? 'Скрыть' : 'Показать всё'}
+				</button>
+			)}
 		</div>
 	)
 }

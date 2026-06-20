@@ -5,6 +5,16 @@ function RatingStars({ onRatingChange }) {
 	const [selected, setSelected] = useState(null)
 	const numbersRating = [1, 2, 3, 4, 5]
 
+	const handleClick = num => {
+		if (selected === num) {
+			setSelected(null)
+			onRatingChange(null)
+		} else {
+			setSelected(num)
+			onRatingChange(num)
+		}
+	}
+
 	return (
 		<div className='rating-block'>
 			<h3>Рейтинг</h3>
@@ -13,10 +23,7 @@ function RatingStars({ onRatingChange }) {
 					<span
 						key={num}
 						className={`rating-number ${selected === num ? 'active' : ''}`}
-						onClick={() => {
-							setSelected(num)
-							onRatingChange(num)
-						}}
+						onClick={() => handleClick(num)}
 					>
 						{num}
 					</span>

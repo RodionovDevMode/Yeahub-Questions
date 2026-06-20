@@ -1,5 +1,5 @@
 import './RegistrationModal.css'
-function RegistrationModal({ isOpen, openModal, closeModal }) {
+function RegistrationModal({ isOpen, closeModal }) {
 	if (!isOpen) return null
 
 	const handleSubmit = e => {

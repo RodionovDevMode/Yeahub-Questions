@@ -28,11 +28,7 @@ function Header() {
 				</button>
 			</form>
 			{isModalOpen && (
-				<RegistrationModal
-					isOpen={isModalOpen}
-					openModal={openModal}
-					closeModal={closeModal}
-				/>
+				<RegistrationModal isOpen={isModalOpen} closeModal={closeModal} />
 			)}
 		</div>
 	)
