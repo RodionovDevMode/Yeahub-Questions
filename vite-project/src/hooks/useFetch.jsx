@@ -6,7 +6,10 @@ function useFetch(url) {
 	const [error, setError] = useState(null)
 
 	useEffect(() => {
-		fetch(url)
+		const controller = new AbortController()
+		let isMounted = true
+		setLoading(true)
+		fetch(url, { signal: controller.signal })
 			.then(response => {
 				if (!response.ok) {
 					throw new Error(`HTTPS status: ${response.status}`)
@@ -14,13 +17,24 @@ function useFetch(url) {
 				return response.json()
 			})
 			.then(data => {
-				setData(data.data || data)
-				setLoading(false)
+				if (isMounted) {
+					setData(data.data || data)
+				}
 			})
 			.catch(err => {
-				setError(err.message)
-				setLoading(false)
+				if (isMounted && err.name !== 'AbortError') {
+					setError(err.message)
+				}
 			})
+			.finally(() => {
+				if (isMounted) {
+					setLoading(false)
+				}
+			})
+		return () => {
+			isMounted = false
+			controller.abort()
+		}
 	}, [url])
 
 	return { data, loading, error }

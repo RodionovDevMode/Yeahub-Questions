@@ -3,18 +3,13 @@ import './DifficultyTags.css'
 
 function DifficultyTags({ onDifficultyChange }) {
 	const levels = ['1-3', '4-6', '7-8', '9-10']
-	const [internalLoading, setInternalLoading] = useState(false)
+
 	const [selectedLevel, setSelectedLevel] = useState(null)
 
 	const handleClick = level => {
-		if (internalLoading) return
-		setInternalLoading(true)
-		setTimeout(() => {
-			const newLevel = level === selectedLevel ? null : level
-			setSelectedLevel(newLevel)
-			onDifficultyChange(newLevel)
-			setInternalLoading(false)
-		}, 1000)
+		const newLevel = level === selectedLevel ? null : level
+		setSelectedLevel(newLevel)
+		onDifficultyChange(newLevel)
 	}
 
 	return (
@@ -27,7 +22,7 @@ function DifficultyTags({ onDifficultyChange }) {
 						onClick={() => handleClick(level)}
 						className={level === selectedLevel ? 'active' : null}
 					>
-						{internalLoading ? 'Идёт загрузка...' : level}
+						{level}
 					</button>
 				))}
 			</div>

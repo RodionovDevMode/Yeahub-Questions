@@ -56,11 +56,17 @@ function QuestionsList() {
 			}
 
 			if (statusFilter === null) {
-				if (questionsStatus[q.id] === 'know') return false
+				if (
+					questionsStatus[q.id] === 'know' ||
+					questionsStatus[q.id] === 'unknown'
+				)
+					return false
 			} else if (statusFilter === 'know') {
 				if (questionsStatus[q.id] !== 'know') return false
 			} else if (statusFilter === 'unknown') {
 				if (questionsStatus[q.id] !== 'unknown') return false
+			} else if (questionsStatus[q.id] === 'all') {
+				if (questionsStatus[q.id] !== 'all') return false
 			}
 			return passDifficulty && passRating && passSkill && passStatus
 		}) || []
@@ -80,6 +86,7 @@ function QuestionsList() {
 						limit={10}
 						onQuestionStatusChange={setQuestionsStatus}
 						questionsStatus={questionsStatus}
+						statusFilter={statusFilter}
 					/>
 				</div>
 
