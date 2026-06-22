@@ -1,11 +1,7 @@
-import QuestionPage from './pages/QuestionsPage/QuestionPage'
-
+import { RouterProvider } from 'react-router-dom'
+import { router } from './router'
 function App() {
-	return (
-		<div>
-			<QuestionPage />
-		</div>
-	)
+	return <RouterProvider router={router} />
 }
 
 export default App

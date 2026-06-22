@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import './Header.css'
 import RegistrationModal from './components/RegistrationModal/RegistrationModal'
+
+import './Header.css'
+import Nav from '../Nav/Nav'
 
 function Header() {
 	const [isModalOpen, setIsModalOpen] = useState(false)
@@ -16,10 +18,7 @@ function Header() {
 				</h1>
 			</div>
 			<div className='menu'>
-				<h3>База вопросов</h3>
-				<h3>Тренажер</h3>
-				<h3>Материалы</h3>
-				<h3>Навыки(hh)</h3>
+				<Nav />
 			</div>
 			<form onSubmit={e => e.preventDefault()}>
 				<button>Вход</button>
