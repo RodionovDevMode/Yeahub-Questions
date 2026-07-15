@@ -4,6 +4,7 @@ import QuestionPage from './pages/QuestionsPage/QuestionPage'
 import SkillsHhPage from './pages/SkillsHhPage/SkillsHhPage'
 import PracticePage from './pages/PracticePage/PracticePage'
 import MaterialPage from './pages/MaterialsPage/MaterialsPage'
+import QuestionDetail from './components/QuestionDetail/QuestionDetail'
 
 export const router = createBrowserRouter([
 	{
@@ -14,6 +15,7 @@ export const router = createBrowserRouter([
 				path: '/',
 				element: <QuestionPage />,
 			},
+			{ path: '/question-detail/:questionId', element: <QuestionDetail /> },
 			{
 				path: '/practice',
 				element: <PracticePage />,

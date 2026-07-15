@@ -61,18 +61,36 @@
 	font-size: 18px;
 }
 
-.question-header span {
-	font-size: 20px;
+.arrow {
+	font-size: 16px;
 	color: #aa3bff;
+	transition: transform 0.5s ease;
+}
+
+.arrow.open {
+	transform: rotate(180deg);
 }
 
 .question-content {
+	max-height: 0;
+	overflow: hidden;
+	opacity: 0;
+	transition:
+		max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+		opacity 0.4s ease;
+}
+
+.question-content.open {
+	max-height: 2000px;
+	opacity: 1;
+}
+
+.question-content-inner {
 	padding: 16px;
 	border-top: 1px solid #e5e5e5;
 	margin-top: 8px;
 }
 
-/* Кнопки статуса */
 .question-status-buttons {
 	display: flex;
 	gap: 10px;
@@ -103,26 +121,10 @@
 	transform: scale(0.96);
 }
 
-/* Кнопка "Знаю" */
-.question-status-buttons .btn-know {
-	border-color: #4caf50;
-	color: #2e7d32;
-}
-
-.question-status-buttons .btn-know:hover {
-	background: #e8f5e9;
-	border-color: #388e3c;
-}
-
-/* Кнопка "Не знаю" */
-.question-status-buttons .btn-dont-know {
-	border-color: #f44336;
-	color: #c62828;
-}
-
-.question-status-buttons .btn-dont-know:hover {
-	background: #ffebee;
-	border-color: #d32f2f;
+.question-status-buttons button.active {
+	background: #aa3bff;
+	color: white;
+	border-color: #aa3bff;
 }
 
 .question-show-all-btn {
@@ -133,8 +135,33 @@
 	border-radius: 8px;
 	cursor: pointer;
 }
+
 .question-show-all-btn:hover {
 	background: #aa3bff;
 	color: white;
 	border-color: #aa3bff;
+}
+
+.question-status-buttons a {
+	padding: 8px 20px;
+	border: 2px solid #e0e0e0;
+	border-radius: 20px;
+	background: #f5f5f5;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 500;
+	transition: all 0.2s ease;
+	color: #333;
+	text-decoration: none;
+}
+
+.question-status-buttons a:hover {
+	background: #aa3bff;
+	color: white;
+	border-color: #aa3bff;
+	transform: scale(1.02);
+}
+
+.question-status-buttons a:active {
+	transform: scale(0.96);
 }

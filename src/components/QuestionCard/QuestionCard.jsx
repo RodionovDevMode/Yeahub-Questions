@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import './QuestionCard.css'
 
 function QuestionCard({
@@ -36,11 +37,15 @@ function QuestionCard({
 						onClick={() => toggleQuestion(question.id)}
 					>
 						<h2>{question.title}</h2>
-						<span>{openId === question.id ? '▲' : '▼'}</span>
+						<span className={`arrow ${openId === question.id ? 'open' : ''}`}>
+							▼
+						</span>
 					</div>
 
-					{openId === question.id && (
-						<div className='question-content'>
+					<div
+						className={`question-content ${openId === question.id ? 'open' : ''}`}
+					>
+						<div className='question-content-inner'>
 							<div className='info-row'>
 								<span>Рейтинг: {question.rate || 0}</span>
 								<span>Сложность: {question.complexity || 0}</span>
@@ -53,12 +58,13 @@ function QuestionCard({
 									className={
 										questionsStatus[question.id] === 'know' ? 'active' : ''
 									}
-									onClick={() =>
+									onClick={e => {
+										e.stopPropagation()
 										onQuestionStatusChange(prev => ({
 											...prev,
 											[question.id]: 'know',
 										}))
-									}
+									}}
 								>
 									✅ Знаю
 								</button>
@@ -66,18 +72,22 @@ function QuestionCard({
 									className={
 										questionsStatus[question.id] === 'unknown' ? 'active' : ''
 									}
-									onClick={() =>
+									onClick={e => {
+										e.stopPropagation()
 										onQuestionStatusChange(prev => ({
 											...prev,
 											[question.id]: 'unknown',
 										}))
-									}
+									}}
 								>
 									❌ Не знаю
 								</button>
+								<NavLink to={`/question-detail/${question.id}`}>
+									Подробнее
+								</NavLink>
 							</div>
 						</div>
-					)}
+					</div>
 				</div>
 			))}
 			{statusFilter === 'know' || statusFilter === 'unknown' ? null : (

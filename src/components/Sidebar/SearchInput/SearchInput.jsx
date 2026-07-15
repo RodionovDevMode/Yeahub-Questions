@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import './SearchInput.css'
 
-function SearchInput({ onSearchChange }) {
-	const [search, setSearch] = useState('')
+function SearchInput({ handleSearchChange, searchQuery }) {
+	const [search, setSearch] = useState(searchQuery)
 
 	const handleChange = e => {
 		setSearch(e.target.value)
-		onSearchChange(e.target.value)
+		handleSearchChange(e.target.value)
 	}
 
 	return (

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import useSidebarData from '../../hooks/useSidebarData'
 import QuestionCard from '../QuestionCard/QuestionCard'
 import Sidebar from '../Sidebar/Sidebar'
+import { useSearchParams } from 'react-router-dom'
 import './QuestionsList.css'
 
 function QuestionsList() {
@@ -18,10 +19,11 @@ function QuestionsList() {
 	} = useSidebarData()
 	const [difficulty, setDifficulty] = useState(null)
 	const [rating, setRating] = useState(null)
-	const [search, setSearch] = useState('')
 	const [selectedSkill, setSelectedSkill] = useState(null)
 	const [questionsStatus, setQuestionsStatus] = useState({})
-	const [statusFilter, setStatusFilter] = useState(null)
+	const [statusFilter, setStatusFilter] = useState('all')
+	const [searchParams] = useSearchParams()
+	const search = searchParams.get('search') || ''
 
 	useEffect(() => {
 		const saved = localStorage.getItem('questionsStatus')
@@ -47,12 +49,13 @@ function QuestionsList() {
 			if (rating) {
 				passRating = q.rate === rating
 			}
+
+			if (selectedSkill) {
+				passSkill = q.questionSkills?.some(skill => skill.id === selectedSkill)
+			}
 			if (search) {
 				const match = q.title.toLowerCase().includes(search.toLowerCase())
 				if (!match) return false
-			}
-			if (selectedSkill) {
-				passSkill = q.questionSkills?.some(skill => skill.id === selectedSkill)
 			}
 
 			if (statusFilter === null) {
@@ -102,7 +105,6 @@ function QuestionsList() {
 					errorQuestions={errorQuestions}
 					onDifficultyChange={setDifficulty}
 					onRatingChange={setRating}
-					onSearchChange={setSearch}
 					onSkillSelect={setSelectedSkill}
 					selectedSkill={selectedSkill}
 					statusFilter={statusFilter}
