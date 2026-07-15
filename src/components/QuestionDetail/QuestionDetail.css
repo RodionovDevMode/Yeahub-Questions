@@ -1,0 +1,123 @@
+.question-detail {
+	background: #fff;
+	border: 1px solid #e5e5e5;
+	border-radius: 12px;
+	padding: 24px;
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+.question-detail h1 {
+	font-size: 24px;
+	margin-bottom: 16px;
+}
+
+.question-detail .info-row {
+	display: flex;
+	gap: 24px;
+	margin-bottom: 20px;
+	color: #666;
+	font-size: 14px;
+}
+
+.question-detail img {
+	width: 100%;
+	max-width: 500px;
+	margin: 20px 0;
+	border-radius: 8px;
+}
+
+.question-detail .description {
+	line-height: 1.6;
+	color: #333;
+	margin-bottom: 20px;
+}
+
+.question-detail .skills {
+	margin-bottom: 20px;
+}
+
+.question-detail .skills h3 {
+	font-size: 16px;
+	margin-bottom: 8px;
+	color: #333;
+}
+
+.question-detail .skill-tag {
+	display: inline-block;
+	padding: 4px 12px;
+	background: #f0e6ff;
+	color: #aa3bff;
+	border-radius: 16px;
+	font-size: 14px;
+	margin-right: 8px;
+	margin-bottom: 8px;
+}
+
+.question-detail .answer {
+	margin-top: 24px;
+	padding-top: 20px;
+	border-top: 1px solid #e5e5e5;
+}
+
+.question-detail .answer h2 {
+	font-size: 18px;
+	margin-bottom: 16px;
+	color: #333;
+}
+
+.question-detail .answer p {
+	line-height: 1.6;
+	color: #333;
+	margin-bottom: 12px;
+}
+
+.question-detail .answer pre {
+	background: #1e1e1e;
+	color: #d4d4d4;
+	padding: 16px;
+	border-radius: 8px;
+	overflow-x: auto;
+	font-family: 'Courier New', monospace;
+	font-size: 14px;
+	margin: 20px 0;
+}
+
+.question-detail .answer code {
+	font-family: 'Courier New', monospace;
+	background: #f5f5f5;
+	padding: 2px 6px;
+	border-radius: 4px;
+	font-size: 14px;
+	color: #aa3bff;
+}
+
+.question-detail .answer pre code {
+	background: transparent;
+	padding: 0;
+	color: #d4d4d4;
+}
+
+.btn.back {
+	margin-top: 24px;
+	padding: 8px 20px;
+	border: 2px solid #e0e0e0;
+	border-radius: 20px;
+	background: #f5f5f5;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 500;
+	transition: all 0.2s ease;
+	color: #333;
+}
+
+.btn.back:hover {
+	background: #aa3bff;
+	color: white;
+	border-color: #aa3bff;
+	transform: scale(1.02);
+}
+
+.btn.back:active {
+	transform: scale(0.96);
+}

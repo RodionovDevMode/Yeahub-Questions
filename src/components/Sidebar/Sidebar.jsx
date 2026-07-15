@@ -4,6 +4,7 @@ import RatingStars from './RatingStars/RatingStars'
 import SearchInput from './SearchInput/SearchInput'
 import './Sidebar.css'
 import StatusButtons from './StatusButtons/StatusButtons'
+import { useSearchParams } from 'react-router-dom'
 
 function Sidebar({
 	specializations,
@@ -15,15 +16,31 @@ function Sidebar({
 	errorSkills,
 	onDifficultyChange,
 	onRatingChange,
-	onSearchChange,
 	onSkillSelect,
 	selectedSkill,
 	onStatusFilterChange,
 	statusFilter,
 }) {
+	const [searchParams, setSearchParams] = useSearchParams()
+	const searchQuery = searchParams.get('search') || ''
+
+	const handleSearchChange = value => {
+		setSearchParams(prev => {
+			if (value.trim()) {
+				prev.set('search', value)
+			} else {
+				prev.delete('search')
+			}
+			return prev
+		})
+	}
+
 	return (
 		<aside className='sidebar'>
-			<SearchInput onSearchChange={onSearchChange} />
+			<SearchInput
+				searchQuery={searchQuery}
+				handleSearchChange={handleSearchChange}
+			/>
 			<div className='block'>
 				<FilterBlock
 					title='Специализация'

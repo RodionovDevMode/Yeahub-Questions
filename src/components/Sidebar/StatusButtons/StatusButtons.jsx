@@ -18,7 +18,7 @@ function StatusButtons({ onStatusFilterChange, statusFilter }) {
 					Не изученные
 				</button>
 				<button
-					className={statusFilter === null ? 'active' : ''}
+					className={statusFilter === 'all' ? 'active' : ''}
 					onClick={() => onStatusFilterChange('all')}
 				>
 					Все
